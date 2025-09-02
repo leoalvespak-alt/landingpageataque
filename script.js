@@ -89,13 +89,14 @@ function createUrgencyTimer() {
     updateTimer(); // Primeira execução
 }
 
-// ===== EFEITOS DE PARALLAX SUTIL =====
+// ===== EFEITOS DE PARALLAX SUTIL E MENU FIXO =====
 
 function addParallaxEffect() {
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         const heroImage = document.querySelector('.hero-image');
         const guaranteeSeal = document.querySelector('.guarantee-seal');
+        const fixedHeader = document.querySelector('.fixed-header');
         
         if (heroImage) {
             heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
@@ -103,6 +104,17 @@ function addParallaxEffect() {
         
         if (guaranteeSeal) {
             guaranteeSeal.style.transform = `translateY(${scrolled * 0.2}px)`;
+        }
+        
+        // Efeito para o menu fixo - mais opaco ao rolar
+        if (fixedHeader) {
+            if (scrolled > 50) {
+                fixedHeader.style.backgroundColor = 'rgba(242, 242, 242, 0.95)';
+                fixedHeader.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                fixedHeader.style.backgroundColor = 'rgba(242, 242, 242, 0.8)';
+                fixedHeader.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
         }
     });
 }
@@ -382,6 +394,24 @@ function throttle(func, limit) {
 
 // ===== INICIALIZAÇÃO =====
 
+// ===== MENU RESPONSIVO PARA MOBILE =====
+
+function setupMobileMenu() {
+    const menuItems = document.querySelectorAll('.main-nav a');
+    
+    // Fecha o menu ao clicar em um item (para mobile)
+    menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Se estiver em modo mobile, ajusta o scroll para compensar o menu fixo
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    window.scrollBy(0, -60);
+                }, 100);
+            }
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializa todas as funcionalidades
     console.log('🚀 Rota de Ataque - Landing Page carregada!');
@@ -391,6 +421,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSmoothScrolling();
     setupFormValidation();
     setupLazyLoading();
+    setupMobileMenu();
     
     // Animações
     setupFadeInAnimations();
@@ -402,6 +433,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Efeitos especiais (opcional - pode ser removido se causar problemas de performance)
     if (window.innerWidth > 768) {
         addParallaxEffect();
+    } else {
+        // Versão simplificada do efeito para mobile (apenas para o menu)
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const fixedHeader = document.querySelector('.fixed-header');
+            
+            if (fixedHeader) {
+                if (scrolled > 30) {
+                    fixedHeader.style.backgroundColor = 'rgba(242, 242, 242, 0.95)';
+                } else {
+                    fixedHeader.style.backgroundColor = 'rgba(242, 242, 242, 0.8)';
+                }
+            }
+        });
     }
     
     // Timer de urgência (opcional)

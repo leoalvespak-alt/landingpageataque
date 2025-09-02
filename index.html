@@ -17,6 +17,27 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- MENU FIXO -->
+    <header class="fixed-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Rota de Ataque</div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#hero">Início</a></li>
+                        <li><a href="#problem">O Problema</a></li>
+                        <li><a href="#solution">A Solução</a></li>
+                        <li><a href="#testimonials">Depoimentos</a></li>
+                        <li><a href="#pricing">Planos</a></li>
+                    </ul>
+                </nav>
+                <a href="https://wa.me/5585997169114" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Fale Conosco
+                </a>
+            </div>
+        </div>
+    </header>
+    
     <!-- SEÇÃO 1: CABEÇALHO / PRIMEIRA DOBRA -->
     <section id="hero" class="hero-section">
         <div class="container">
@@ -36,9 +57,8 @@
                     </p>
                 </div>
                 <div class="hero-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-laptop-code"></i>
-                        <p>Mockup da Plataforma<br>Rota de Ataque</p>
+                    <div class="mockup-frame">
+                        <img class="mockup-screen lazy" alt="Mockup da plataforma Rota de Ataque" data-src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=1200&auto=format&fit=crop" src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=1200&auto=format&fit=crop">
                     </div>
                 </div>
             </div>
@@ -58,6 +78,7 @@
                 
                 <div class="problem-cards">
                     <div class="problem-card">
+                        <img class="card-illustration lazy" alt="Estudo desorganizado" data-src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop">
                         <div class="card-icon">
                             <i class="fas fa-hdd"></i>
                         </div>
@@ -68,6 +89,7 @@
                     </div>
                     
                     <div class="problem-card">
+                        <img class="card-illustration lazy" alt="Zigue-zague nos estudos" data-src="https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop">
                         <div class="card-icon">
                             <i class="fas fa-random"></i>
                         </div>
@@ -78,6 +100,7 @@
                     </div>
                     
                     <div class="problem-card">
+                        <img class="card-illustration lazy" alt="Dúvidas sem suporte" data-src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=1200&auto=format&fit=crop">
                         <div class="card-icon">
                             <i class="fas fa-comments"></i>
                         </div>
@@ -100,9 +123,9 @@
         <div class="container">
             <div class="solution-content">
                 <div class="solution-image">
-                    <div class="mentor-photo">
-                        <i class="fas fa-user-tie"></i>
-                        <p>Leonardo Alves<br>Mentor Especialista</p>
+                    <div class="mentor-card">
+                        <img class="mentor-img lazy" alt="Leonardo Alves - Mentor" data-src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=900&auto=format&fit=crop">
+                        <p class="mentor-name">Leonardo Alves<br>Mentor Especialista</p>
                     </div>
                 </div>
                 <div class="solution-text">
@@ -165,7 +188,7 @@
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-photo">
-                        <i class="fas fa-user-check"></i>
+                        <img class="lazy" alt="Aluno aprovado - Lucas" data-src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=300&auto=format&fit=crop">
                     </div>
                     <blockquote class="testimonial-text">
                         "Eu era o rei dos cursos. Tinha mais de 50GB de material baixado, mas nunca passava da fase de estudos. Com o Rota de Ataque, aprendi a estudar com foco. Em 8 meses, conquistei minha aprovação."
@@ -176,7 +199,7 @@
                 
                 <div class="testimonial-card">
                     <div class="testimonial-photo">
-                        <i class="fas fa-user-check"></i>
+                        <img class="lazy" alt="Aluna aprovada - Mariana" data-src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=300&auto=format&fit=crop">
                     </div>
                     <blockquote class="testimonial-text">
                         "Estudava há 3 anos sem direção. O Leonardo me mostrou que eu estava desperdiçando 70% do meu tempo com assuntos irrelevantes. Foquei no que importa e hoje sou servidor federal."
@@ -187,7 +210,7 @@
                 
                 <div class="testimonial-card">
                     <div class="testimonial-photo">
-                        <i class="fas fa-user-check"></i>
+                        <img class="lazy" alt="Aluno aprovado - Roberto" data-src="https://images.unsplash.com/photo-1520975682031-ae3f0d86d2f3?q=80&w=300&auto=format&fit=crop">
                     </div>
                     <blockquote class="testimonial-text">
                         "A diferença é que aqui você tem alguém que realmente se importa com o seu resultado. O acompanhamento é real, não é só marketing. Valeu cada centavo investido."
@@ -405,8 +428,20 @@
     <!-- Footer simples -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Rota de Ataque. Todos os direitos reservados.</p>
-            <p>Desenvolvido para transformar estudantes em aprovados.</p>
+            <div class="footer-content">
+                <p class="copyright">&copy; 2025 Rota de Ataque. Todos os direitos reservados.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/rotadeataque" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://youtube.com/@rotadeataque" target="_blank" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://wa.me/5585997169114" target="_blank" class="social-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
