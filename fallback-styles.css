@@ -1,0 +1,89 @@
+/* ===== FALLBACK STYLES PARA FONTES E ÍCONES ===== */
+
+/* Fallback para Font Awesome - ícones essenciais */
+.fas, .far, .fab {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ícones essenciais como fallback */
+.fa-sign-in-alt::before { content: "→"; }
+.fa-whatsapp::before { content: "📱"; }
+.fa-hdd::before { content: "💾"; }
+.fa-random::before { content: "🔄"; }
+.fa-user-slash::before { content: "👤"; }
+.fa-bullseye::before { content: "🎯"; }
+.fa-clock::before { content: "⏰"; }
+.fa-users::before { content: "👥"; }
+.fa-chart-line::before { content: "📈"; }
+.fa-video::before { content: "🎥"; }
+.fa-tasks::before { content: "📋"; }
+.fa-clipboard-list::before { content: "📝"; }
+.fa-user-tie::before { content: "👔"; }
+.fa-chevron-left::before { content: "‹"; }
+.fa-chevron-right::before { content: "›"; }
+.fa-chevron-down::before { content: "⌄"; }
+.fa-shield-alt::before { content: "🛡️"; }
+.fa-instagram::before { content: "📷"; }
+.fa-youtube::before { content: "📺"; }
+
+/* Fallback para fontes Google */
+@font-face {
+    font-family: 'Teko';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Arial Black'), local('Arial-Black'), sans-serif;
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Arial'), local('Helvetica'), sans-serif;
+}
+
+/* Melhorias de performance */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevenção de FOUC (Flash of Unstyled Content) */
+body {
+    visibility: hidden;
+}
+
+body.loaded {
+    visibility: visible;
+}
+
+/* Otimizações de renderização */
+.hero-section,
+.problem-section,
+.solution-section,
+.testimonials-section,
+.pricing-section {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Fallback para animações reduzidas */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+

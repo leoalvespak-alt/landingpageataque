@@ -4,136 +4,1195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rota de Ataque - Aulas Direcionadas para Aprovação em Concursos</title>
-    <meta name="description" content="Aulas direcionadas e um mentor ao seu lado. Chega de cursos genéricos. Você precisa do Rota de Ataque!">
+    <meta name="description" content="Aulas direcionadas com um mentor obcecado pelo seu resultado. Você precisa do Rota de Ataque!">
     
-    <!-- Fonts -->
+    <!-- Fonts - Otimizado -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
     
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Font Awesome - Versão estável -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
-    <link rel="stylesheet" href="styles.css">
+    <!-- Fallback styles -->
+    <link rel="stylesheet" href="fallback-styles.css">
+    
+    <style>
+        /* ===== VARIÁVEIS CSS ===== */
+        :root {
+            --background-dark: #1b1b1b;
+            --background-light: #f8f8f8;
+            --foreground-dark: #ffffff;
+            --foreground-light: #1b1b1b;
+            --primary: #ff3b47;
+            --primary-hover: #ff525c;
+            --primary-glow: rgba(255, 59, 71, 0.3);
+            --card-dark: #242424;
+            --card-light: #ffffff;
+            --glass-dark: rgba(36, 36, 36, 0.95);
+            --glass-light: rgba(255, 255, 255, 0.95);
+            --shadow-dark: 0 20px 60px rgba(0, 0, 0, 0.4);
+            --shadow-light: 0 10px 40px rgba(0, 0, 0, 0.1);
+            --font-title: 'Teko', sans-serif;
+            --font-text: 'IBM Plex Sans', sans-serif;
+            --border-radius: 4px;
+        }
+
+        /* ===== RESET E BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-text), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== TIPOGRAFIA ===== */
+        h1, h2, h3, h4 {
+            font-family: var(--font-title), 'Arial Black', Arial, sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+
+        p, span, li, a {
+            font-family: var(--font-text);
+        }
+
+        /* ===== SEÇÕES COM TEMAS ALTERNADOS ===== */
+        .dark-theme {
+            background: var(--background-dark);
+            color: var(--foreground-dark);
+        }
+
+        .light-theme {
+            background: var(--background-light);
+            color: var(--foreground-light);
+        }
+
+        .dark-theme .card {
+            background: var(--glass-dark);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .light-theme .card {
+            background: var(--glass-light);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== MENU FIXO APRIMORADO ===== */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(27, 27, 27, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-title);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .main-nav ul li a {
+            font-family: var(--font-text);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--foreground-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main-nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .login-button {
+            background: transparent;
+            color: var(--primary);
+            padding: 10px 25px;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--primary);
+            font-family: var(--font-text);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .login-button:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            padding: 10px 25px;
+            border-radius: var(--border-radius);
+            font-family: var(--font-text);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            padding: 140px 0 80px;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-headline {
+            font-family: var(--font-title);
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-headline .highlight {
+            color: var(--primary);
+        }
+
+        .hero-subheadline {
+            font-family: var(--font-text);
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.8;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            font-family: var(--font-title);
+            font-size: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 20px 40px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 59, 71, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 59, 71, 0.4);
+        }
+
+        .cta-support {
+            font-family: var(--font-text);
+            font-size: 14px;
+            margin-top: 16px;
+            opacity: 0.7;
+        }
+
+        /* ===== SEÇÃO VSL (VIDEO SALES LETTER) ===== */
+        .vsl-section {
+            padding: 100px 0 80px;
+            position: relative;
+        }
+
+        .vsl-container {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .vsl-title {
+            font-family: var(--font-title);
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .vsl-subtitle {
+            font-family: var(--font-text);
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            background: #000;
+            border: 3px solid var(--primary);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== SEÇÃO PROBLEMA ===== */
+        .problem-section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-text);
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 60px;
+            opacity: 0.9;
+        }
+
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .problem-card {
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .card-icon {
+            margin-bottom: 24px;
+        }
+
+        .card-icon i {
+            font-size: 48px;
+            color: var(--primary);
+        }
+
+        .card-title {
+            font-family: var(--font-title);
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .card-description {
+            font-family: var(--font-text);
+            font-size: 16px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        /* ===== SEÇÃO DEMONSTRAÇÃO (GIFS CARROSSEL) ===== */
+        .demo-section {
+            padding: 100px 0;
+        }
+
+        .demo-carousel {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .demo-track {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s ease;
+        }
+
+        .demo-card {
+            flex: 0 0 350px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .demo-gif {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .demo-info {
+            padding: 25px;
+        }
+
+        .demo-icon {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .demo-title {
+            font-family: var(--font-title);
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .demo-description {
+            font-family: var(--font-text);
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--border-radius);
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-hover);
+            transform: scale(1.1);
+        }
+
+        /* ===== SEÇÃO SOLUÇÃO ===== */
+        .solution-section {
+            padding: 100px 0;
+        }
+
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .solution-pillars {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .pillar {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .pillar-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
+            border-radius: var(--border-radius);
+        }
+
+        .pillar-icon i {
+            font-size: 24px;
+            color: white;
+        }
+
+        .pillar-title {
+            font-family: var(--font-title);
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .pillar-description {
+            font-family: var(--font-text);
+            font-size: 16px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        /* ===== SEÇÃO BENEFÍCIOS (SLIDES) ===== */
+        .benefits-section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits-slider {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .benefits-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .benefit-slide {
+            flex: 0 0 100%;
+            padding: 0 20px;
+        }
+
+        .benefit-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .benefit-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--primary);
+        }
+
+        .benefit-text h3 {
+            font-family: var(--font-title);
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .benefit-text p {
+            font-family: var(--font-text);
+            font-size: 18px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .slide-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            background: rgba(255, 59, 71, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary);
+            width: 30px;
+        }
+
+        /* ===== SEÇÃO DEPOIMENTOS (CARROSSEL AUTOMÁTICO) ===== */
+        .testimonials-section {
+            padding: 100px 0;
+            overflow: hidden;
+        }
+
+        .testimonials-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .testimonials-track {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .testimonial-card {
+            flex: 0 0 350px;
+            margin: 0 15px;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 2px solid rgba(255, 59, 71, 0.2);
+        }
+
+        .testimonial-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: var(--border-radius);
+            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+        }
+
+        .testimonial-text {
+            font-family: var(--font-text);
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .testimonial-name {
+            font-family: var(--font-title);
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .testimonial-achievement {
+            font-family: var(--font-text);
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* ===== SEÇÃO FAQ ===== */
+        .faq-section {
+            padding: 100px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+        }
+
+        .faq-question {
+            padding: 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-title);
+            font-size: 22px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .faq-icon {
+            font-size: 20px;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 25px;
+            font-family: var(--font-text);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 25px 25px;
+        }
+
+        /* ===== SEÇÃO PREÇOS ===== */
+        .pricing-section {
+            padding: 100px 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            padding: 50px 35px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .dark-theme .pricing-card {
+            background: var(--glass-dark);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .light-theme .pricing-card {
+            background: white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--primary);
+            transform: scale(1.05);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            font-family: var(--font-title);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: var(--border-radius);
+            letter-spacing: 1px;
+        }
+
+        .plan-name {
+            font-family: var(--font-title);
+            font-size: 32px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .plan-description {
+            font-family: var(--font-text);
+            font-size: 16px;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .plan-benefits {
+            text-align: left;
+            margin: 30px 0;
+        }
+
+        .plan-benefits li {
+            font-family: var(--font-text);
+            font-size: 15px;
+            margin-bottom: 12px;
+            list-style: none;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .plan-benefits li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .price-strike {
+            font-family: var(--font-text);
+            font-size: 18px;
+            opacity: 0.5;
+            text-decoration: line-through;
+            display: block;
+        }
+
+        .price-final {
+            font-family: var(--font-title);
+            font-size: 48px;
+            color: var(--primary);
+            margin: 20px 0;
+            display: block;
+        }
+
+        .price-installment {
+            font-family: var(--font-text);
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        /* ===== SEÇÃO GARANTIA ===== */
+        .guarantee-section {
+            padding: 100px 0;
+        }
+
+        .guarantee-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .guarantee-seal {
+            display: flex;
+            justify-content: center;
+        }
+
+        .seal-container {
+            width: 200px;
+            height: 200px;
+            background: var(--primary);
+            border-radius: var(--border-radius);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(255, 59, 71, 0.3);
+        }
+
+        .seal-container i {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .seal-days {
+            font-family: var(--font-title);
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .seal-text {
+            font-family: var(--font-text);
+            font-size: 14px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== SEÇÃO CTA FINAL ===== */
+        .final-cta-section {
+            padding: 120px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 59, 71, 0.15) 0%, rgba(255, 59, 71, 0.05) 100%);
+        }
+
+        .urgency-text {
+            font-family: var(--font-text);
+            font-size: 20px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 50px 0;
+            background: var(--background-dark);
+            color: var(--foreground-dark);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 22px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .copyright {
+            font-family: var(--font-text);
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .hide-on-mobile {
+                display: none !important;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-headline {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .vsl-title {
+                font-size: 32px;
+            }
+
+            .demo-card {
+                flex: 0 0 280px;
+            }
+
+            .solution-content {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .testimonial-card {
+                flex: 0 0 280px;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .guarantee-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .header-buttons {
+                gap: 10px;
+            }
+
+            .login-button {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-headline {
+                font-size: 28px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .demo-card {
+                flex: 0 0 250px;
+            }
+
+            .faq-question {
+                font-size: 18px;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- MENU FIXO -->
+    <!-- MENU FIXO APRIMORADO -->
     <header class="fixed-header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">Rota de Ataque</div>
-                <nav class="main-nav">
-                    <ul>
-                        <li class="hide-on-mobile"><a href="#hero">Início</a></li>
-                        <li class="hide-on-mobile"><a href="#problem">O Problema</a></li>
-                        <li class="hide-on-mobile"><a href="#solution">A Solução</a></li>
-                        <li class="hide-on-mobile"><a href="#testimonials">Depoimentos</a></li>
-                        <li><a href="#pricing">Planos</a></li>
-                    </ul>
-                </nav>
-                <a href="https://wa.me/5585997169114" class="whatsapp-button hide-on-mobile" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Fale Conosco
-                </a>
+                <div class="nav-wrapper">
+                    <nav class="main-nav hide-on-mobile">
+                        <ul>
+                            <li><a href="#vsl">Assista</a></li>
+                            <li><a href="#problema">Problema</a></li>
+                            <li><a href="#solucao">Solução</a></li>
+                            <li><a href="#depoimentos">Depoimentos</a></li>
+                            <li><a href="#pricing">Planos</a></li>
+                        </ul>
+                    </nav>
+                    <div class="header-buttons">
+                        <a href="https://app.rotadeataque.com.br" class="login-button">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                        <a href="https://wa.me/5585997169114" class="whatsapp-button hide-on-mobile">
+                            <i class="fab fa-whatsapp"></i> Suporte
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
-    
-    <!-- SEÇÃO 1: CABEÇALHO / PRIMEIRA DOBRA -->
-    <section id="hero" class="hero-section">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section dark-theme">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-headline">
-                        Aulas direcionadas e um mentor ao seu lado. Chega de cursos genéricos. Você precisa do <span class="highlight">Rota de Ataque!</span>
+                        Aulas direcionadas com um mentor obcecado pelo seu resultado. 
+                        <span class="highlight">Você precisa do Rota de Ataque!</span>
                     </h1>
                     <p class="hero-subheadline">
-                        Chega de se sentir perdido em meio a montanhas de materiais genéricos e promessas vazias...
+                        Chega de se sentir perdido em meio a montanhas de materiais genéricos e promessas vazias. 
+                        Enquanto outros concurseiros se afogam em informação, nossos alunos seguem uma rota clara 
+                        e estratégica para a aprovação na Carreira Policial.
                     </p>
-                    <button class="cta-button primary" onclick="scrollToSection('pricing')">
+                    <a href="#pricing" class="cta-button">
                         QUERO TRAÇAR MINHA ROTA PARA A APROVAÇÃO
-                    </button>
+                    </a>
                     <p class="cta-support">
                         Matrículas abertas por tempo limitado | Garantia de 7 dias
                     </p>
                 </div>
                 <div class="hero-image">
-                    <div class="mockup-frame">
-                        <img class="mockup-screen lazy" alt="Mockup da plataforma Rota de Ataque" data-src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=1200&auto=format&fit=crop" src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=1200&auto=format&fit=crop">
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600" alt="Equipe Rota de Ataque" 
+                         style="width: 100%; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 3px solid var(--primary);">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 2: O PROBLEMA / AGITAÇÃO -->
-    <section id="problem" class="problem-section">
+    <!-- SEÇÃO VSL (VIDEO SALES LETTER) -->
+    <section id="vsl" class="vsl-section light-theme">
         <div class="container">
-            <div class="section-content">
-                <h2 class="section-title">
-                    Se você estuda há meses (ou anos) e a aprovação parece cada vez mais longe, leia isto.
-                </h2>
-                <p class="section-subtitle">
-                    Você se identifica com algum destes cenários?
-                </p>
+            <div class="vsl-container">
+                <h2 class="vsl-title">Descubra o Método Que Já Aprovou +500 Alunos</h2>
+                <p class="vsl-subtitle">Assista este vídeo até o final e entenda porque o Rota de Ataque é diferente de tudo que você já viu</p>
                 
-                <div class="problem-cards">
-                    <div class="problem-card">
-                        <img class="card-illustration lazy" alt="Estudo desorganizado" data-src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop">
-                        <div class="card-icon">
-                            <i class="fas fa-hdd"></i>
-                        </div>
-                        <h3 class="card-title">A Síndrome do HD Cheio</h3>
-                        <p class="card-description">
-                            Seu computador tem dezenas de gigabytes de materiais "completos" baixados, mas você não sabe nem por onde começar. Cada novo curso promete ser "o definitivo", mas você continua coletando sem estudar de verdade.
-                        </p>
-                    </div>
-                    
-                    <div class="problem-card">
-                        <img class="card-illustration lazy" alt="Zigue-zague nos estudos" data-src="https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop">
-                        <div class="card-icon">
-                            <i class="fas fa-random"></i>
-                        </div>
-                        <h3 class="card-title">O Zigue-Zague Sem Fim</h3>
-                        <p class="card-description">
-                            Hoje você estuda Direito Constitucional, amanhã pula para Matemática, depois vai para Português... Sem critério, sem prioridade, sem saber se está evoluindo ou apenas "passando o tempo estudando".
-                        </p>
-                    </div>
-                    
-                    <div class="problem-card">
-                        <img class="card-illustration lazy" alt="Dúvidas sem suporte" data-src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=1200&auto=format&fit=crop">
-                        <div class="card-icon">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <h3 class="card-title">O Vazio do "Se Vira"</h3>
-                        <p class="card-description">
-                            Você compra o curso, assiste às aulas e... pronto. Ficou com dúvida? "Procura no Google". Não sabe se está no caminho certo? "Confia no processo". Resultado: você se sente abandonado na sua própria jornada.
-                        </p>
-                    </div>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="Apresentação Rota de Ataque" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
                 </div>
                 
-                <p class="section-conclusion">
-                    Se isso soa familiar, entenda: a culpa não é sua. Você está sofrendo de <span class="highlight">sobrecarga de informação</span>. É hora de ter um plano, não apenas um login e senha.
-                </p>
+                <div class="vsl-cta" style="margin-top: 40px;">
+                    <a href="#pricing" class="cta-button">
+                        QUERO COMEÇAR AGORA MESMO
+                    </a>
+                    <p class="cta-support">
+                        Vagas limitadas | Garantia de 7 dias
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 3: A SOLUÇÃO -->
-    <section id="solution" class="solution-section">
+    <!-- SEÇÃO PROBLEMA -->
+    <section id="problema" class="problem-section dark-theme">
         <div class="container">
+            <h2 class="section-title">Se você estuda há meses (ou anos) e a aprovação parece cada vez mais longe, leia isto</h2>
+            <p class="section-subtitle">Você se identifica com algum destes cenários?</p>
+            
+            <div class="problem-cards">
+                <div class="problem-card card">
+                    <div class="card-icon">
+                        <i class="fas fa-hdd"></i>
+                    </div>
+                    <h3 class="card-title">Síndrome do HD Cheio</h3>
+                    <p class="card-description">
+                        Seu computador tem dezenas de gigabytes em videoaulas e PDFs de todos os cursos que você já comprou, 
+                        mas você não sabe nem por onde começar.
+                    </p>
+                </div>
+                
+                <div class="problem-card card">
+                    <div class="card-icon">
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <h3 class="card-title">Estudo Pinga-Pinga</h3>
+                    <p class="card-description">
+                        Você passa horas vendo dicas no YouTube, pula de um material para o outro e, 
+                        ao final do dia, sente que não aprendeu nada de concreto.
+                    </p>
+                </div>
+                
+                <div class="problem-card card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-slash"></i>
+                    </div>
+                    <h3 class="card-title">A Solidão do Concurseiro</h3>
+                    <p class="card-description">
+                        Você tem uma dúvida específica, uma crise de motivação, mas a única resposta 
+                        que recebe do seu "curso" é um email automático.
+                    </p>
+                </div>
+            </div>
+            
+            <p style="text-align: center; font-size: 20px; max-width: 800px; margin: 0 auto;">
+                Se isso soa familiar, entenda: <strong style="color: var(--primary);">a culpa não é sua.</strong><br>
+                O mercado criou um inimigo para sua aprovação: a sobrecarga de informação.
+            </p>
+        </div>
+    </section>
+
+    <!-- SEÇÃO SOLUÇÃO -->
+    <section id="solucao" class="solution-section light-theme">
+        <div class="container">
+            <h2 class="section-title">Apresentando o Método Rota de Ataque</h2>
+            
             <div class="solution-content">
-                <div class="solution-image">
-                    <div class="mentor-card">
-                        <img class="mentor-img lazy" alt="Leonardo Alves - Mentor" data-src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=900&auto=format&fit=crop">
-                        <p class="mentor-name">Leonardo Alves<br>Mentor Especialista</p>
-                    </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=500" alt="Leonardo Alves - Mentor" 
+                         style="width: 100%; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 3px solid var(--primary);">
                 </div>
-                <div class="solution-text">
-                    <h2 class="section-title">
-                        Apresentando o Método Rota de Ataque
-                    </h2>
-                    <p class="solution-intro">
-                        O Rota de Ataque é o exato oposto disso. Não somos uma biblioteca de conteúdo, somos um QG de estratégia.
+                
+                <div>
+                    <p style="font-size: 20px; margin-bottom: 30px;">
+                        O Rota de Ataque é o exato oposto disso. Não somos uma biblioteca de conteúdo, 
+                        somos um <strong>QG de estratégia</strong>.
                     </p>
                     
                     <div class="solution-pillars">
@@ -142,9 +1201,10 @@
                                 <i class="fas fa-bullseye"></i>
                             </div>
                             <div class="pillar-content">
-                                <h3 class="pillar-title">Direcionado:</h3>
+                                <h3 class="pillar-title">Direcionado</h3>
                                 <p class="pillar-description">
-                                    Você estuda apenas o que tem alta probabilidade de cair na sua prova específica. Sem enrolação, sem "achismo". Cada minuto do seu tempo é investido com precisão cirúrgica.
+                                    Você estuda apenas o que tem alta probabilidade de cair na sua prova, 
+                                    com base em análise de editais e estatísticas.
                                 </p>
                             </div>
                         </div>
@@ -154,9 +1214,10 @@
                                 <i class="fas fa-clock"></i>
                             </div>
                             <div class="pillar-content">
-                                <h3 class="pillar-title">Objetivo:</h3>
+                                <h3 class="pillar-title">Objetivo</h3>
                                 <p class="pillar-description">
-                                    Cada aula, cada exercício, cada dica tem um propósito claro: fazer você passar. Não perdemos tempo com conteúdo "interessante" que não agrega pontos na sua prova.
+                                    Aulas e materiais direto ao ponto. Feitos para quem tem uma rotina 
+                                    corrida e precisa de eficiência máxima.
                                 </p>
                             </div>
                         </div>
@@ -166,9 +1227,10 @@
                                 <i class="fas fa-users"></i>
                             </div>
                             <div class="pillar-content">
-                                <h3 class="pillar-title">Com Acompanhamento Real:</h3>
+                                <h3 class="pillar-title">Com Acompanhamento Real</h3>
                                 <p class="pillar-description">
-                                    Você não está sozinho. Temos mentoria ativa, acompanhamento do seu progresso e ajustes na rota conforme sua evolução. É como ter um personal trainer, mas para concursos.
+                                    Chega de se sentir só. Aqui você tem um mentor ao seu lado, 
+                                    respondendo suas dúvidas e garantindo seu progresso.
                                 </p>
                             </div>
                         </div>
@@ -178,238 +1240,331 @@
         </div>
     </section>
 
-    <!-- SEÇÃO 4: PROVA SOCIAL ESTRATÉGICA -->
-    <section id="testimonials" class="testimonials-section">
+    <!-- SEÇÃO DEMONSTRAÇÃO (GIFS DA PLATAFORMA) -->
+    <section id="demo" class="demo-section dark-theme">
         <div class="container">
-            <h2 class="section-title">
-                Veja quem já trocou a sobrecarga pela estratégia (e hoje veste a farda):
-            </h2>
+            <h2 class="section-title">Conheça Nossa Plataforma Por Dentro</h2>
             
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-photo">
-                        <img class="lazy" alt="Aluno aprovado - Lucas" data-src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=300&auto=format&fit=crop">
+            <div class="demo-carousel">
+                <div class="demo-track" id="demoTrack">
+                    <div class="demo-card card">
+                        <img src="https://via.placeholder.com/350x250/FF3B47/FFFFFF?text=Dashboard" alt="Dashboard" class="demo-gif">
+                        <div class="demo-info">
+                            <div class="demo-icon"><i class="fas fa-chart-line"></i></div>
+                            <h3 class="demo-title">Dashboard Inteligente</h3>
+                            <p class="demo-description">Acompanhe seu progresso em tempo real com métricas detalhadas.</p>
+                        </div>
                     </div>
-                    <blockquote class="testimonial-text">
-                        "Eu era o rei dos cursos. Tinha mais de 50GB de material baixado, mas nunca passava da fase de estudos. Com o Rota de Ataque, aprendi a estudar com foco. Em 8 meses, conquistei minha aprovação."
-                    </blockquote>
-                    <cite class="testimonial-name">Lucas Mendes</cite>
-                    <p class="testimonial-achievement">Aprovado PM-SP</p>
+                    
+                    <div class="demo-card card">
+                        <img src="https://via.placeholder.com/350x250/FF3B47/FFFFFF?text=Aulas" alt="Aulas" class="demo-gif">
+                        <div class="demo-info">
+                            <div class="demo-icon"><i class="fas fa-video"></i></div>
+                            <h3 class="demo-title">Aulas Direcionadas</h3>
+                            <p class="demo-description">Videoaulas focadas apenas no que cai na sua prova específica.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-card card">
+                        <img src="https://via.placeholder.com/350x250/FF3B47/FFFFFF?text=Questões" alt="Questões" class="demo-gif">
+                        <div class="demo-info">
+                            <div class="demo-icon"><i class="fas fa-tasks"></i></div>
+                            <h3 class="demo-title">Banco de Questões</h3>
+                            <p class="demo-description">Mais de 10.000 questões comentadas e organizadas por assunto.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-card card">
+                        <img src="https://via.placeholder.com/350x250/FF3B47/FFFFFF?text=Simulados" alt="Simulados" class="demo-gif">
+                        <div class="demo-info">
+                            <div class="demo-icon"><i class="fas fa-clipboard-list"></i></div>
+                            <h3 class="demo-title">Simulados Personalizados</h3>
+                            <p class="demo-description">Teste seus conhecimentos com simulados idênticos ao estilo da sua banca.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-card card">
+                        <img src="https://via.placeholder.com/350x250/FF3B47/FFFFFF?text=Mentoria" alt="Mentoria" class="demo-gif">
+                        <div class="demo-info">
+                            <div class="demo-icon"><i class="fas fa-user-tie"></i></div>
+                            <h3 class="demo-title">Mentoria Individual</h3>
+                            <p class="demo-description">Sessões exclusivas com nossos mentores especialistas.</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="testimonial-card">
-                    <div class="testimonial-photo">
-                        <img class="lazy" alt="Aluna aprovada - Mariana" data-src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=300&auto=format&fit=crop">
-                    </div>
-                    <blockquote class="testimonial-text">
-                        "Estudava há 3 anos sem direção. O Leonardo me mostrou que eu estava desperdiçando 70% do meu tempo com assuntos irrelevantes. Foquei no que importa e hoje sou servidor federal."
-                    </blockquote>
-                    <cite class="testimonial-name">Mariana Silva</cite>
-                    <p class="testimonial-achievement">Aprovada INSS</p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-photo">
-                        <img class="lazy" alt="Aluno aprovado - Roberto" data-src="https://images.unsplash.com/photo-1520975682031-ae3f0d86d2f3?q=80&w=300&auto=format&fit=crop">
-                    </div>
-                    <blockquote class="testimonial-text">
-                        "A diferença é que aqui você tem alguém que realmente se importa com o seu resultado. O acompanhamento é real, não é só marketing. Valeu cada centavo investido."
-                    </blockquote>
-                    <cite class="testimonial-name">Roberto Santos</cite>
-                    <p class="testimonial-achievement">Aprovado TRT-SP</p>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" onclick="moveCarousel('demo', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn" onclick="moveCarousel('demo', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 5: A OFERTA - PREÇOS -->
-    <section id="pricing" class="pricing-section">
+    <!-- SEÇÃO DEPOIMENTOS -->
+    <section id="depoimentos" class="testimonials-section light-theme">
         <div class="container">
-            <h2 class="section-title">
-                Escolha sua Rota de Ataque para a Aprovação
-            </h2>
+            <h2 class="section-title">Veja quem já trocou a sobrecarga pela estratégia</h2>
+            
+            <div class="testimonials-wrapper">
+                <div class="testimonials-track">
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" alt="Lucas Mendes" class="testimonial-photo">
+                        <p class="testimonial-text">
+                            "Eu era o rei dos cursos. Tinha assinatura de 3 plataformas diferentes e vivia ansioso. 
+                            O Rota de Ataque me deu CLAREZA. Fui aprovado na PM-SP em 8 meses."
+                        </p>
+                        <h4 class="testimonial-name">Lucas Mendes</h4>
+                        <p class="testimonial-achievement">Aprovado PM-SP</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150" alt="Juliana Costa" class="testimonial-photo">
+                        <p class="testimonial-text">
+                            "Eu estava prestes a desistir. O acompanhamento individual do Leonardo foi o que me salvou. 
+                            Não é um curso, é um mentor de verdade."
+                        </p>
+                        <h4 class="testimonial-name">Juliana Costa</h4>
+                        <p class="testimonial-achievement">Aprovada PRF</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150" alt="Fernando Oliveira" class="testimonial-photo">
+                        <p class="testimonial-text">
+                            "Com filho pequeno, eu só tinha 3 horas por dia. O método objetivo foi perfeito. 
+                            Estudei menos, mas estudei certo. Passei no primeiro concurso!"
+                        </p>
+                        <h4 class="testimonial-name">Fernando Oliveira</h4>
+                        <p class="testimonial-achievement">Aprovado GCM-BH</p>
+                    </div>
+                    
+                    <!-- Duplicação para loop infinito -->
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" alt="Lucas Mendes" class="testimonial-photo">
+                        <p class="testimonial-text">
+                            "Eu era o rei dos cursos. Tinha assinatura de 3 plataformas diferentes e vivia ansioso. 
+                            O Rota de Ataque me deu CLAREZA. Fui aprovado na PM-SP em 8 meses."
+                        </p>
+                        <h4 class="testimonial-name">Lucas Mendes</h4>
+                        <p class="testimonial-achievement">Aprovado PM-SP</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150" alt="Juliana Costa" class="testimonial-photo">
+                        <p class="testimonial-text">
+                            "Eu estava prestes a desistir. O acompanhamento individual do Leonardo foi o que me salvou. 
+                            Não é um curso, é um mentor de verdade."
+                        </p>
+                        <h4 class="testimonial-name">Juliana Costa</h4>
+                        <p class="testimonial-achievement">Aprovada PRF</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150" alt="Fernando Oliveira" class="testimonial-photo">
+                        <p class="testimonial-text">
+                            "Com filho pequeno, eu só tinha 3 horas por dia. O método objetivo foi perfeito. 
+                            Estudei menos, mas estudei certo. Passei no primeiro concurso!"
+                        </p>
+                        <h4 class="testimonial-name">Fernando Oliveira</h4>
+                        <p class="testimonial-achievement">Aprovado GCM-BH</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO PREÇOS -->
+    <section id="pricing" class="pricing-section dark-theme">
+        <div class="container">
+            <h2 class="section-title">Escolha sua Rota de Ataque para a Aprovação</h2>
+            <p class="section-subtitle">Seu futuro não pode esperar. Escolha o plano que melhor se alinha à sua urgência de ser aprovado.</p>
             
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3 class="plan-name">Plano Mensal</h3>
-                    <p class="plan-description">
-                        Para quem quer testar nossa metodologia
-                    </p>
-                    <div class="plan-benefits">
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Acesso à plataforma completa</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Aulas direcionadas semanais</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Material de apoio estratégico</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Suporte via chat</span>
-                        </div>
-                    </div>
-                    <div class="plan-price">
-                        <span class="price-strike">R$ 197,00</span>
-                        <span class="price-final">R$ 147,00</span>
-                        <span class="price-installment">ou 3x de R$ 49,00</span>
-                    </div>
-                    <button class="cta-button secondary">ASSINAR AGORA</button>
-                </div>
-                
-                <div class="pricing-card">
                     <h3 class="plan-name">Plano Trimestral</h3>
-                    <p class="plan-description">
-                        O equilíbrio perfeito entre preço e resultado
-                    </p>
-                    <div class="plan-benefits">
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Tudo do plano mensal</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Mentoria mensal individual</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Cronograma personalizado</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Simulados direcionados</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Desconto de 25%</span>
-                        </div>
-                    </div>
-                    <div class="plan-price">
-                        <span class="price-strike">R$ 591,00</span>
-                        <span class="price-final">R$ 397,00</span>
-                        <span class="price-installment">ou 6x de R$ 66,17</span>
-                    </div>
-                    <button class="cta-button secondary">ASSINAR AGORA</button>
+                    <p class="plan-description">Ideal para quem está focado nos editais que estão para sair</p>
+                    
+                    <ul class="plan-benefits">
+                        <li>Acesso completo a TODOS os cursos</li>
+                        <li>Cronograma de Ataque personalizado</li>
+                        <li>Banco de questões completo</li>
+                        <li>Simulados ilimitados</li>
+                        <li>Acompanhamento individual básico</li>
+                        <li>Atualizações priorizadas</li>
+                    </ul>
+                    
+                    <span class="price-strike">De R$ 237,00</span>
+                    <span class="price-final">R$ 189</span>
+                    <span class="price-installment">ou 3x de R$ 63,00</span>
+                    
+                    <a href="#" class="cta-button">ASSINAR AGORA</a>
                 </div>
                 
                 <div class="pricing-card featured">
                     <div class="plan-badge">MAIS ESCOLHIDO</div>
                     <h3 class="plan-name">Plano Anual</h3>
-                    <p class="plan-description">
-                        O plano definitivo para quem decidiu que 2024 é o ano da aprovação
-                    </p>
-                    <div class="plan-benefits">
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Tudo dos planos anteriores</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Mentoria semanal individual</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Revisões estratégicas mensais</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Acesso vitalício aos materiais</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>WhatsApp direto com Leonardo</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Desconto de 50%</span>
-                        </div>
-                    </div>
-                    <div class="plan-price">
-                        <span class="price-strike">R$ 2.364,00</span>
-                        <span class="price-final">R$ 947,00</span>
-                        <span class="price-installment">ou 12x de R$ 78,92</span>
-                    </div>
-                    <button class="cta-button primary">ASSINAR AGORA</button>
+                    <p class="plan-description">O plano definitivo para quem decidiu que este é o ano da aprovação</p>
+                    
+                    <ul class="plan-benefits">
+                        <li>Tudo do Plano Trimestral</li>
+                        <li>Maior economia: 50% de desconto</li>
+                        <li>Acesso garantido por 1 ano completo</li>
+                        <li>Todas as atualizações e cursos novos</li>
+                        <li>Mentoria mensal individual</li>
+                        <li>Suporte prioritário via WhatsApp</li>
+                        <li>Material exclusivo de revisão</li>
+                    </ul>
+                    
+                    <span class="price-strike">De R$ 948,00</span>
+                    <span class="price-final">R$ 470</span>
+                    <span class="price-installment">ou 12x de R$ 39,16</span>
+                    
+                    <a href="#" class="cta-button">ASSINAR AGORA</a>
                 </div>
                 
                 <div class="pricing-card">
-                    <h3 class="plan-name">Plano Intensivo</h3>
-                    <p class="plan-description">
-                        Para quem tem prova em breve e precisa de resultados rápidos
-                    </p>
-                    <div class="plan-benefits">
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Cronograma ultra-focado</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Aulas diárias direcionadas</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Mentoria 2x por semana</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Suporte prioritário 24h</span>
-                        </div>
-                        <div class="benefit">
-                            <i class="fas fa-check"></i>
-                            <span>Simulados semanais</span>
-                        </div>
-                    </div>
-                    <div class="plan-price">
-                        <span class="price-strike">R$ 697,00</span>
-                        <span class="price-final">R$ 497,00</span>
-                        <span class="price-installment">ou 6x de R$ 82,83</span>
-                    </div>
-                    <button class="cta-button secondary">ASSINAR AGORA</button>
+                    <h3 class="plan-name">Black Ilimitado</h3>
+                    <p class="plan-description">A experiência premium para quem não aceita nada menos que a aprovação</p>
+                    
+                    <ul class="plan-benefits">
+                        <li>Tudo do Plano Anual</li>
+                        <li>Acesso total por 2 anos</li>
+                        <li>Mentoria Premium Individual 24h</li>
+                        <li>Chamadas de vídeo semanais</li>
+                        <li>Suporte VIP via WhatsApp direto</li>
+                        <li>Estratégias personalizadas</li>
+                        <li>Garantia de reembolso estendida</li>
+                    </ul>
+                    
+                    <span class="price-strike">De R$ 1.580,00</span>
+                    <span class="price-final">R$ 790</span>
+                    <span class="price-installment">Acesso de 2 anos</span>
+                    
+                    <a href="#" class="cta-button">ASSINAR AGORA</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 7: CTA FINAL -->
-    <section id="final-cta" class="final-cta-section">
+    <!-- SEÇÃO GARANTIA -->
+    <section id="garantia" class="guarantee-section light-theme">
         <div class="container">
-            <div class="final-cta-content">
-                <h2 class="section-title">
-                    Até quando você vai adiar o futuro que você merece?
-                </h2>
-                <p class="urgency-text">
-                    Seu concorrente está agora mesmo estudando de forma estratégica. Enquanto você lê isto, alguém está traçando a rota certa, focando no que importa, sendo acompanhado por quem entende do assunto. A diferença entre vocês não é talento. É método.
-                </p>
-                <p class="urgency-text">
-                    Você pode continuar coletando materiais e esperando que um milagre aconteça, ou pode tomar a decisão que vai mudar sua vida hoje mesmo.
-                </p>
-                <button class="cta-button final pulse" onclick="scrollToSection('pricing')">
-                    SIM, QUERO GARANTIR MINHA APROVAÇÃO AGORA
-                </button>
-                <p class="final-support">
-                    Garantia incondicional de 7 dias | Suporte especializado | Resultados comprovados
-                </p>
+            <h2 class="section-title">Seu Risco é Zero. Nossa Garantia é Total</h2>
+            
+            <div class="guarantee-content">
+                <div class="guarantee-seal">
+                    <div class="seal-container">
+                        <i class="fas fa-shield-alt"></i>
+                        <span class="seal-days">7 DIAS</span>
+                        <span class="seal-text">GARANTIA TOTAL</span>
+                    </div>
+                </div>
+                
+                <div class="guarantee-text">
+                    <p style="font-size: 20px; line-height: 1.8;">
+                        Temos tanta confiança na nossa rota que a decisão final fica nas suas mãos. 
+                        Faça sua matrícula hoje, acesse todo o material, siga o cronograma, converse com o suporte.
+                    </p>
+                    <p style="font-size: 20px; line-height: 1.8; margin-top: 20px;">
+                        Se em 7 dias você não sentir que esta é a preparação mais clara e objetiva que você já viu, 
+                        basta nos enviar um único e-mail e nós devolveremos 100% do seu investimento. 
+                        <strong>Sem perguntas, sem burocracia.</strong>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer simples -->
+    <!-- SEÇÃO FAQ -->
+    <section id="faq" class="faq-section dark-theme">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item card">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Como funciona a metodologia Rota de Ataque?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nossa metodologia é baseada em 3 pilares: Direcionamento (você estuda apenas o que tem alta probabilidade de cair), Objetividade (cada minuto é aproveitado) e Acompanhamento (mentoria personalizada). Analisamos editais, provas anteriores e criamos um plano específico para cada concurso.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item card">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Quanto tempo leva para ver resultados?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Os primeiros resultados aparecem já nas primeiras semanas, com melhor organização e foco. A aprovação depende do seu comprometimento, mas nossos alunos costumam ser aprovados entre 4 a 8 meses de preparação focada.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item card">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Qual a diferença para outros cursinhos?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Cursinhos tradicionais oferecem conteúdo genérico e deixam você sozinho. Nós oferecemos: conteúdo direcionado para SUA prova, mentoria individual, acompanhamento constante, comunidade ativa e suporte real. É a diferença entre estudar e estudar para passar.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item card">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Como funciona o suporte e mentoria?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Você tem acesso a: chat direto com mentores, sessões de mentoria individual (frequência varia conforme o plano), grupo exclusivo no WhatsApp, lives semanais de dúvidas e revisões estratégicas mensais do seu plano de estudos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section id="final-cta" class="final-cta-section light-theme">
+        <div class="container">
+            <h2 class="section-title">Até quando você vai adiar o futuro que você merece?</h2>
+            
+            <p class="urgency-text">
+                Seu concorrente está agora mesmo estudando de forma estratégica. 
+                Cada dia que você passa perdido na sobrecarga de informação é um passo que ele dá na sua frente na lista de aprovados.
+            </p>
+            
+            <p class="urgency-text">
+                A decisão de transformar seu estudo caótico em uma rota de ataque precisa ser tomada agora.
+            </p>
+            
+            <a href="#pricing" class="cta-button" style="font-size: 24px; padding: 25px 50px; margin-top: 30px;">
+                SIM, QUERO GARANTIR MINHA APROVAÇÃO AGORA
+            </a>
+            
+            <p class="cta-support" style="margin-top: 20px;">
+                Oferta por tempo limitado | Garantia de 7 dias | Parcelamento em até 12x
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <p class="copyright">&copy; 2025 Rota de Ataque. Todos os direitos reservados.</p>
                 <div class="social-links">
-                    <a href="https://instagram.com/rotadeataque" target="_blank" class="social-link">
+                    <a href="https://instagram.com/rotadeataque" target="_blank" class="social-link" title="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://youtube.com/@rotadeataque" target="_blank" class="social-link">
+                    <a href="https://youtube.com/@rotadeataque" target="_blank" class="social-link" title="YouTube">
                         <i class="fab fa-youtube"></i>
                     </a>
-                    <a href="https://wa.me/5585997169114" target="_blank" class="social-link">
+                    <a href="https://wa.me/5585997169114" target="_blank" class="social-link" title="WhatsApp">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
@@ -417,6 +1572,160 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // ===== TRATAMENTO DE ERROS DE CSS =====
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName === 'LINK' && e.target.rel === 'stylesheet') {
+                console.warn('Erro ao carregar CSS:', e.target.href);
+                // Remove o link problemático
+                e.target.remove();
+            }
+        });
+
+        // ===== FALLBACK PARA FONTES =====
+        document.fonts.ready.then(function() {
+            console.log('Fontes carregadas com sucesso');
+            document.body.classList.add('loaded');
+        }).catch(function(error) {
+            console.warn('Erro ao carregar fontes, usando fallbacks:', error);
+            document.body.classList.add('loaded');
+        });
+
+        // ===== TRATAMENTO DE ERROS DE RECURSOS =====
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName === 'LINK' && e.target.rel === 'stylesheet') {
+                console.warn('Erro ao carregar CSS:', e.target.href);
+                e.target.remove();
+            } else if (e.target.tagName === 'IMG') {
+                console.warn('Erro ao carregar imagem:', e.target.src);
+                e.target.style.display = 'none';
+            }
+        }, true);
+
+        // ===== CARREGAMENTO ASSÍNCRONO DE RECURSOS =====
+        function loadResource(url, type) {
+            return new Promise((resolve, reject) => {
+                const element = document.createElement(type === 'css' ? 'link' : 'script');
+                
+                if (type === 'css') {
+                    element.rel = 'stylesheet';
+                    element.href = url;
+                } else {
+                    element.src = url;
+                }
+                
+                element.onload = resolve;
+                element.onerror = reject;
+                
+                document.head.appendChild(element);
+            });
+        }
+
+        // ===== CARROSSEL DE DEMONSTRAÇÃO =====
+        let demoPosition = 0;
+        const demoTrack = document.getElementById('demoTrack');
+        const demoCards = document.querySelectorAll('.demo-card');
+        const cardWidth = 380;
+
+        function moveCarousel(type, direction) {
+            if (type === 'demo') {
+                const maxPosition = -(demoCards.length - 3) * cardWidth;
+                demoPosition += direction * cardWidth;
+                
+                if (demoPosition > 0) demoPosition = 0;
+                if (demoPosition < maxPosition) demoPosition = maxPosition;
+                
+                demoTrack.style.transform = `translateX(${demoPosition}px)`;
+            }
+        }
+
+        // ===== FAQ TOGGLE =====
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const allItems = document.querySelectorAll('.faq-item');
+            
+            allItems.forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            faqItem.classList.toggle('active');
+        }
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ===== HEADER SCROLL EFFECT =====
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.fixed-header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(27, 27, 27, 1)';
+                header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.6)';
+            } else {
+                header.style.background = 'rgba(27, 27, 27, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.4)';
+            }
+        });
+
+        // ===== ANIMAÇÃO DE ENTRADA =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.demo-card, .testimonial-card, .pricing-card, .faq-item, .problem-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // ===== AUTOPLAY DO CARROSSEL DE DEMONSTRAÇÃO =====
+        setInterval(() => {
+            moveCarousel('demo', -1);
+            if (demoPosition <= -(demoCards.length - 3) * cardWidth) {
+                setTimeout(() => {
+                    demoTrack.style.transition = 'none';
+                    demoPosition = 0;
+                    demoTrack.style.transform = `translateX(0)`;
+                    setTimeout(() => {
+                        demoTrack.style.transition = 'transform 0.5s ease';
+                    }, 50);
+                }, 500);
+            }
+        }, 3000);
+
+        // ===== PAUSE NA ANIMAÇÃO DOS DEPOIMENTOS NO HOVER =====
+        const testimonialsTrack = document.querySelector('.testimonials-track');
+        if (testimonialsTrack) {
+            testimonialsTrack.addEventListener('mouseenter', () => {
+                testimonialsTrack.style.animationPlayState = 'paused';
+            });
+            testimonialsTrack.addEventListener('mouseleave', () => {
+                testimonialsTrack.style.animationPlayState = 'running';
+            });
+        }
+    </script>
 </body>
 </html>

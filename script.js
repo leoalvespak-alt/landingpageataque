@@ -462,7 +462,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
 window.addEventListener('error', function(e) {
     console.error('Erro detectado:', e.error);
+    
+    // Tratamento específico para erros de CSS
+    if (e.target && e.target.tagName === 'LINK' && e.target.rel === 'stylesheet') {
+        console.warn('Erro ao carregar CSS externo:', e.target.href);
+        e.target.remove();
+        return;
+    }
+    
+    // Tratamento para erros de imagens
+    if (e.target && e.target.tagName === 'IMG') {
+        console.warn('Erro ao carregar imagem:', e.target.src);
+        e.target.style.display = 'none';
+        return;
+    }
+    
     // Aqui você pode enviar erros para um serviço de monitoramento
+});
+
+// ===== TRATAMENTO DE ERROS DE PROMISES =====
+window.addEventListener('unhandledrejection', function(e) {
+    console.error('Promise rejeitada:', e.reason);
+    e.preventDefault(); // Previne o erro de aparecer no console
 });
 
 // ===== OTIMIZAÇÕES DE PERFORMANCE =====
